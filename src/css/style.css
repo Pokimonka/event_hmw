@@ -1,0 +1,31 @@
+
+.field{
+  width: 500px;
+  margin-bottom: 0;
+  margin: auto;
+}
+
+.cell-game {
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.status {
+  margin-bottom: 30px;
+}
+.cell {
+  width: 100px;
+  height: 100px;
+  margin: 5px 3px;
+  background: gray;
+  border-radius: 50%;
+}
+
+.has_goblin {
+  background-image: url(../img/goblin.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: brown;
+}
