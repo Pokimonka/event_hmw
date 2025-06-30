@@ -1,30 +1,39 @@
-const killeGoblin = document.getElementById("dead");
-const missGoblin = document.getElementById("lost");
-let cells = document.querySelectorAll(".cell");
-let score = 0;
-let miss = 0;
-
-function play(hole) {
-  if (hole.target.classList.contains("has_goblin")) {
-    killeGoblin.textContent = ++score;
-  } else {
-    missGoblin.textContent = ++miss;
+export default class Play {
+  constructor(field) {
+    this.field = field;
+    this.killeGoblin = document.getElementById("dead");
+    this.missGoblin = document.getElementById("lost");
+    this.startPlay();
   }
-  if (score === 10) {
-    endPlay("Победа");
-  } else if (miss === 5) {
-    endPlay("Проигрыш");
+
+  startPlay() {
+    this.score = 0;
+    this.miss = 0;
+    console.log(this.field);
+    this.field.addEventListener("click", (hole) => {
+      if (hole.target.classList.contains("has_goblin")) {
+        this.killeGoblin.textContent = ++this.score;
+      } else {
+        this.missGoblin.textContent = ++this.miss;
+      }
+      this.check();
+    });
+  }
+
+  check() {
+    //можно сделать бесконечно
+    if (this.score === 10) {
+      this.endPlay("Победа");
+    } else if (this.miss === 5) {
+      this.endPlay("Проигрыш");
+    }
+  }
+
+  endPlay(msg) {
+    alert(msg);
+    this.score = 0;
+    this.miss = 0;
+    this.killeGoblin.textContent = this.score;
+    this.missGoblin.textContent = this.miss;
   }
 }
-
-function endPlay(msg) {
-  alert(msg);
-  score = 0;
-  miss = 0;
-  killeGoblin.textContent = score;
-  missGoblin.textContent = miss;
-}
-
-cells.forEach((hole) => {
-  hole.addEventListener("click", play);
-});

@@ -1,11 +1,11 @@
 
-.field{
+.cell-game {
   width: 500px;
   margin-bottom: 0;
   margin: auto;
 }
 
-.cell-game {
+.field {
   width: 500px;
   display: flex;
   flex-wrap: wrap;
